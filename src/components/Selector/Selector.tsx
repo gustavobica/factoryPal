@@ -13,7 +13,7 @@ const Selector = ({ selected, onChange, options }: Props) => {
     <Container>
       <StyledLabel htmlFor="category-select">Choose a category:</StyledLabel>
       <StyledSelect
-        id="category-select"
+        id="selector"
         onChange={(e) => onChange(e.target.value)}
         value={selected}
       >

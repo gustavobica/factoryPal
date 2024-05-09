@@ -11,19 +11,22 @@ import {
   YAxis,
 } from "recharts";
 import { Metric } from "../../types/data";
-import { CardsType, ChartsProps } from "../../types/graphs";
+import { CardsType } from "../../types/graphs";
 import CardList from "../CardList/CardList";
-import { getRandomColor } from "../utils/utils";
+import { capitalize, getRandomColor } from "../utils/utils";
 import { ChartContainer } from "./MetricsBarCharts.styles";
+import { MetricsBarChartsProps, MetricsWithColor } from "./types";
 
-type MetricWithColor = Metric & { fill: string };
-
-type MetricsWithColor = MetricWithColor[];
-
-const MetricBarChart = ({ metrics, highlight, onHighlight }: ChartsProps) => {
+const MetricsBarCharts = ({
+  metrics,
+  highlight,
+  onHighlight,
+  type,
+}: MetricsBarChartsProps) => {
   const handleBarClick = (data: Metric) => {
     onHighlight(data.id);
   };
+  // add the color to each item so they match in the graph and info cards list
   const enhancedData: MetricsWithColor = useMemo(() => {
     return metrics.map((item) => ({
       ...item,
@@ -69,6 +72,7 @@ const MetricBarChart = ({ metrics, highlight, onHighlight }: ChartsProps) => {
           >
             {enhancedData.map((entry) => (
               <Cell
+                key={entry.id}
                 fill={entry.fill}
                 stroke={highlight === entry.id ? "#ff7300" : entry.fill}
               />
@@ -76,13 +80,16 @@ const MetricBarChart = ({ metrics, highlight, onHighlight }: ChartsProps) => {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <CardList
-        cards={cardsList}
-        highlight={highlight}
-        onHighlight={onHighlight}
-      />
+      <>
+        <CardList
+          header={type && <h3>Time in {capitalize(type)}</h3>}
+          cards={cardsList}
+          highlight={highlight}
+          onHighlight={onHighlight}
+        />
+      </>
     </ChartContainer>
   );
 };
 
-export default MetricBarChart;
+export default MetricsBarCharts;

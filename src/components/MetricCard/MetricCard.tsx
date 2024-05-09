@@ -14,7 +14,7 @@ const MetricCard = ({ metric, onHighlight, highlight }: Prop) => {
   const color = useMemo(() => getRandomColor(), []);
   return (
     <Card
-      data-testid={`MetricCard-${metric.label}`}
+      data-testid={`MetricCard-${metric.id}`}
       color={color}
       onClick={() => onHighlight(metric.id)}
       isActive={highlight === metric.id}

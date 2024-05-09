@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import MetricCard from "../../components/MetricCard/MetricCard";
-import MetricBarChart from "../../components/MetricsBarCharts/MetricsBarCharts";
-import { capitalize, groupDataByType } from "../../components/utils/utils";
+import MetricsBarCharts from "../../components/MetricsBarCharts/MetricsBarCharts";
+import { groupDataByType } from "../../components/utils/utils";
 import { ChartsProps } from "../../types/graphs";
 import { ChartsGrid } from "./ShiftView.styles";
 
@@ -25,11 +25,11 @@ const ShiftView = ({ metrics, highlight, onHighlight }: ChartsProps) => {
         }
         return (
           <div key={type}>
-            <h3>Time in {capitalize(type)}</h3>
-            <MetricBarChart
+            <MetricsBarCharts
               metrics={data}
               highlight={highlight}
               onHighlight={onHighlight}
+              type={type}
             />
           </div>
         );

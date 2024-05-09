@@ -13,6 +13,7 @@ const MetricsCards = ({ metrics, highlight, onHighlight }: Prop) => {
     <CardsGrid>
       {metrics.map((metric) => (
         <MetricCard
+          key={metric.id}
           metric={metric}
           highlight={highlight}
           onHighlight={onHighlight}

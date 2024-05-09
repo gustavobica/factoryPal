@@ -4,7 +4,6 @@ import MetricsBarCharts from "../../components/MetricsBarCharts/MetricsBarCharts
 import MetricsCards from "../../components/MetricsCards/MetricsCards";
 import MetricsCircleCharts from "../../components/MetricsCircleCharts/MetricsCircleCharts";
 import {
-  capitalize,
   groupDataByType,
   isPercentageType,
   isTimeType,
@@ -13,17 +12,18 @@ import { Metrics } from "../../types/data";
 import { ChartsProps } from "../../types/graphs";
 import { CardsFlex } from "./DashboardView.styles";
 const DashboardView = ({ metrics, highlight, onHighlight }: ChartsProps) => {
+  // Group by type so same types will be bundle together and have the proper graph
   const groupedData = useMemo(() => groupDataByType(metrics), [metrics]);
   const renderComponent = useCallback(
     (metrics: Metrics, type: string) => {
       if (isTimeType(type)) {
         return (
           <div key={type} style={{ width: "100%" }}>
-            <h3>Time in {capitalize(type)}</h3>
             <MetricsBarCharts
               metrics={metrics}
               highlight={highlight}
               onHighlight={onHighlight}
+              type={type}
             />
           </div>
         );

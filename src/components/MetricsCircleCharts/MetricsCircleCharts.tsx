@@ -13,6 +13,7 @@ const MetricsCircleCharts = ({ metrics, highlight, onHighlight }: Prop) => {
     <CardsGrid>
       {metrics.map((metric) => (
         <MetricCircleChart
+          key={metric.id}
           metric={metric}
           highlight={highlight}
           onHighlight={onHighlight}

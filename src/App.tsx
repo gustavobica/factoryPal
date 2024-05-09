@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import DashboardView from "./Views/DashboardView/DashboardView";
 import DownTimeView from "./Views/DownTimeView";
@@ -13,16 +13,17 @@ import { StyledApp } from "./styles/global.styles";
 import { Metric } from "./types/data";
 
 const metricsData: Metric[] = require("./data.json").data;
-console.log(metricsData);
 
 function App() {
+  // Metric that will be highlighted both on table and chart
   const [highlightedMetric, setHighlightedMetric] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(DEFAULT_CATEGORY);
 
-  const handleCategoryChange = (value: string) => {
+  const handleCategoryChange = useCallback((value: string) => {
     setSelectedCategory(value);
-  };
+  }, []);
 
+  // Filter by the category, if all selected use default data
   const filteredData = useMemo(
     () =>
       selectedCategory === DEFAULT_CATEGORY
@@ -31,10 +32,15 @@ function App() {
     [selectedCategory]
   );
 
+  //Get a unique set of categories to use in the select (to switch views)
   const options = useMemo(
     () => Array.from(new Set(metricsData.map((metric) => metric.category))),
     []
   );
+
+  /* If the category is unknow (not typed before) or All, return  give generic view.
+   * If we know the category provide the correct view
+   */
 
   return (
     <StyledApp>

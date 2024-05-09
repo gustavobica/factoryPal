@@ -41,10 +41,6 @@ const EfficiencyView = ({ metrics, highlight, onHighlight }: ChartsProps) => {
     [metrics, renderComponent]
   );
 
-  return (
-    <>
-      <CardsGrid>{Cards}</CardsGrid>
-    </>
-  );
+  return <CardsGrid>{Cards}</CardsGrid>;
 };
 export default EfficiencyView;

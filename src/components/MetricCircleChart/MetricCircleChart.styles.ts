@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const Value = styled.div`
   position: absolute;
-  top: calc(50% + 1.5rem + 1ch);
+  top: calc(50% + 1.5rem + 1ch); //center on the card
   left: calc(50% - 1.5ch);
   font-size: 1.5em;
   font-weight: bold;

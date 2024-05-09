@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component correctly highlights a metric 1`] = `
+<div
+  class="sc-kuWfzm jEmpbQ"
+>
+  68
+  %
+</div>
+`;

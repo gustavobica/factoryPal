@@ -17,6 +17,14 @@
       "category": "efficiency"
     },
     {
+      "id": "production_volume",
+      "label": "Production Volume",
+      "value": 200,
+      "type": "units",
+      "description": "Amount of units produced",
+      "category": "volume"
+    },
+    {
       "id": "lbp",
       "label": "Loss before pallets",
       "value": -268,
@@ -40,6 +48,7 @@
       "description": "Time spent (in years) cleaning the machines during the last shift",
       "category": "shift"
     },
+
     {
       "id": "shift_duration",
       "label": "Shift duration",

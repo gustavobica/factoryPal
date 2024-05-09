@@ -32,3 +32,5 @@ export const PercentageTypesObject = {
 } as const;
 
 export const DEFAULT_CATEGORY = "All";
+
+export const SMALL_SCREEN = "550px";

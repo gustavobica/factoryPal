@@ -16,7 +16,9 @@ This app can be used in https://factory-pal.vercel.app/ or by running locally, `
 
 For this project my idea was to create at same time a generic app (that can handle any type/category), in the event that in a real word situation, a new type/category is inserted the app would still function, but also still be capable to display usefull information. Although I wanted to make it generic enough to handle uknown cases, I felt that made sense to take advantage of the particularities and standard types. Meaning, if I known that I have percentages, then I should show the ideal graph for that, if I have info that for a specific category makes sense to bundle together I should do that. And because of that, I create Views that in this case use categories as the main way to bundle info. Because the views are just combinations of smaller components if I need to create a view for efficiency and shifts (i.e) , I could easily do that,by creating a new view that receives a filtered metrics array containing only those 2, and then just pick the graphs that I want to use from the components.
 
-The table is connected to the graphs, by clicking on the table the macthing graph/entry will display and active state, by clicking in the graph/entry the reverse will happen, an entry in the table will reflect that
+The table is connected to the graphs, by clicking on the table the macthing graph/entry will display and active state, by clicking in the graph/entry the reverse will happen, an entry in the table will reflect that change.
+
+In terms of testing I just did a general overview of the functionalities, did do an extensive test due to it being a demo, in a real world application I would try to achieve at least 80% coverage. The idea with both E2E and functional testing was just to give a general coverage that ensure the basic funcionalities.
 
 ## Available Scripts
 
